@@ -164,7 +164,7 @@
               "eventHubName": "[parameters('eventhubName')]",
               "connection": "[variables('connectionStringKey')]",
               "cardinality": "many",
-              "dataType": "",
+              "dataType": "string",
               "consumerGroup": "$Default"
             }
           ],

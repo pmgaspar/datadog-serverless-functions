@@ -177,7 +177,7 @@
           "disabled": false
         },
         "files": {
-          "index.js": "[parameters('functionCode')]"
+          "index.js": ""
         },
         "language": "node",
         "isDisabled": false

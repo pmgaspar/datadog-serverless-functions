@@ -155,18 +155,6 @@
       "apiVersion": "2020-06-01",
       "properties": {
         "config": {
-          "bindings": [
-            {
-              "name": "eventHubMessages",
-              "type": "eventHubTrigger",
-              "direction": "in",
-              "eventHubName": "[parameters('eventhubName')]",
-              "connection": "[variables('connectionStringKey')]",
-              "cardinality": "many",
-              "dataType": "",
-              "consumerGroup": "$Default"
-            }
-          ],
           "disabled": false
         },
         "files": {

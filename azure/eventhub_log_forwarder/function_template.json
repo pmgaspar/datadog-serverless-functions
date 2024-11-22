@@ -94,7 +94,7 @@
       "kind": "functionapp",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-		"[resourceId('Microsoft.Storage/storageAccounts', 'WestEuropePlan')]"
+	"[resourceId('Microsoft.Web/serverfarms', 'WestEuropePlan')]"
       ],
       "properties": {
         "name": "[parameters('functionAppName')]",

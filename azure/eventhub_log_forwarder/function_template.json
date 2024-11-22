@@ -147,7 +147,7 @@
     },
     {
       "apiVersion": "2019-08-01",
-      "name": "[concat(variables('functionAppName'),'/', parameters('functionName'))]",
+      "name": "[concat(parameters('functionAppName'), '/', parameters('functionName'))]",
       "type": "Microsoft.Web/sites/functions",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"

@@ -146,39 +146,27 @@
       }
     },
     {
-      "name": "[concat(parameters('functionAppName'), '/', parameters('functionName'))]",
+      "apiVersion": "2019-08-01",
+      "name": "[concat(variables('functionAppName'),'/', parameters('functionName'))]",
       "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2020-06-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+      ],
       "properties": {
         "config": {
           "bindings": [
             {
-              "authLevel": "function",
-              "type": "httpTrigger",
+              "name": "Timer",
+              "type": "timerTrigger",
               "direction": "in",
-              "name": "Request",
-              "methods": [
-                "get",
-                "post"
-              ]
-            },
-            {
-              "type": "http",
-              "direction": "out",
-              "name": "Response"
+              "schedule": "0 */60 * * * *"
             }
-          ],
-          "disabled": false
+          ]
         },
         "files": {
-          "index.js": ""
-        },
-        "language": "node",
-        "isDisabled": false
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
-      ]
+          "index.js": "test code"
+        }
+      }
     },
     {
       "type": "Microsoft.Web/serverfarms",

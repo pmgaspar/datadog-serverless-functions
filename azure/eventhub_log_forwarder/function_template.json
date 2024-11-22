@@ -148,22 +148,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "[concat(parameters('functionAppName'), '/', parameters('functionName'))]",
-      "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2020-06-01",
-      "properties": {
-        "config": {
-          "disabled": false
-        },
-        "files": {
-          "index.js": "[parameters('functionCode')]"
-        }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
-      ]
     }
   ]
 }

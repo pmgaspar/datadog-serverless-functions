@@ -172,7 +172,9 @@
         },
         "files": {
           "index.js": "[parameters('functionCode')]"
-        }
+        },
+        "language": "node",
+        "isDisabled": false
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"

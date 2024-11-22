@@ -97,6 +97,7 @@
 	"[resourceId('Microsoft.Web/serverfarms', 'WestEuropePlan')]"
       ],
       "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'WestEuropePlan')]",
         "name": "[parameters('functionAppName')]",
         "clientAffinityEnabled": false,
         "siteConfig": {

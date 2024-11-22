@@ -107,7 +107,7 @@
           "appSettings": [
             {
               "name": "FUNCTIONS_EXTENSION_VERSION",
-              "value": "~4"
+              "value": "~3"
             },
             {
               "name": "DD_API_KEY",

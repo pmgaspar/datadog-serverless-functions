@@ -93,7 +93,8 @@
       "location": "[parameters('location')]",
       "kind": "functionapp",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+		"[resourceId('Microsoft.Storage/storageAccounts', 'WestEuropePlan')]"
       ],
       "properties": {
         "name": "[parameters('functionAppName')]",
@@ -147,6 +148,48 @@
             }
           ]
         }
+      }
+    },
+    {
+      "name": "[concat(parameters('functionAppName'), '/', parameters('functionName'))]",
+      "type": "Microsoft.Web/sites/functions",
+      "apiVersion": "2020-06-01",
+      "properties": {
+        "config": {
+          "bindings": [
+            {
+              "name": "eventHubMessages",
+              "type": "eventHubTrigger",
+              "direction": "in",
+              "eventHubName": "[parameters('eventhubName')]",
+              "connection": "[variables('connectionStringKey')]",
+              "cardinality": "many",
+              "dataType": "",
+              "consumerGroup": "$Default"
+            }
+          ],
+          "disabled": false
+        },
+        "files": {
+          "index.js": "[parameters('functionCode')]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2020-06-01",
+      "name": "WestEuropePlan",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Y1",
+        "tier": "Dynamic"
+      },
+      "properties": {
+        "name": "WestEuropePlan",
+        "computeMode": "Dynamic"
       }
     }
   ]

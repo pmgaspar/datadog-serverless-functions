@@ -159,14 +159,19 @@
         "config": {
           "bindings": [
             {
-              "name": "eventHubMessages",
-              "type": "eventHubTrigger",
+              "authLevel": "function",
+              "type": "httpTrigger",
               "direction": "in",
-              "eventHubName": "[parameters('eventhubName')]",
-              "connection": "[variables('connectionStringKey')]",
-              "cardinality": "many",
-              "dataType": "string",
-              "consumerGroup": "$Default"
+              "name": "Request",
+              "methods": [
+                "get",
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "Response"
             }
           ],
           "disabled": false
